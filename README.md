@@ -33,6 +33,8 @@ Màn hình cho phép người dùng:
 
 ## 6. Thiết kế Figma
 [BTL-14-LineWatch – UI Prototype](https://www.figma.com/design/GvhL62Lkss6xjzEPFKD5nL/BTL-14-LineWatch-%25E2%2580%2593-UI-n%25C3%25A2ng-c%25E1%25BA%25A5p?node-id=2-109&p=f&t=8XLc08QJqcCRZ2Az-0)
+Link github: https://github.com/phamthangx12-cloud/BTL-14-LineWatch
+
 
 ## 7. Ghi chú
 Đây là bản demo frontend. Chức năng gửi báo cáo chưa kết nối máy chủ; bảng phân loại AI sử dụng dữ liệu minh họa và chưa kết nối mô hình AI thực tế.
