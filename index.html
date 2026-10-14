@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LW-06 - Báo sự cố</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="ung-dung">
+
+        <!-- Thanh menu bên trái -->
+        <aside class="sidebar">
+            <div class="logo">LINEWATCH</div>
+            <p class="mo-ta-logo">Theo dõi ca sản xuất</p>
+
+            <div class="vai-tro">Công nhân vận hành</div>
+
+            <nav>
+                <a href="#">Trạng thái dây chuyền</a>
+                <a href="#" class="dang-chon">Báo sự cố</a>
+                <a href="#">Sự cố trong ca</a>
+            </nav>
+
+            <div class="thong-tin-ca">
+                <p>Ca hiện tại</p>
+                <strong>Ca 2 · 14:00–22:00</strong>
+                <span>Tổ A · Xưởng 01</span>
+            </div>
+        </aside>
+
+        <!-- Nội dung chính -->
+        <main class="noi-dung">
+            <header class="topbar">
+                <h1>Báo sự cố</h1>
+
+                <div class="thong-tin-nguoi-dung">
+                    <span id="ngay-hien-tai"></span>
+                    <span class="thong-bao">3</span>
+                    <span class="nguoi-dung">NV &nbsp; Nguyễn</span>
+                </div>
+            </header>
+
+            <section class="khu-vuc">
+                <div class="tieu-de">
+                    <h2>Tạo báo cáo sự cố</h2>
+                    <p>Ghi đúng vị trí, mô tả hiện tượng và kiểm tra gợi ý trước khi gửi</p>
+                </div>
+
+                <div class="bo-cuc">
+
+                    <!-- Biểu mẫu báo sự cố -->
+                    <form id="form-su-co" class="the-form">
+                        <h3>Thông tin sự cố</h3>
+
+                        <div class="hang">
+                            <div class="truong">
+                                <label for="day-chuyen">Dây chuyền</label>
+                                <select id="day-chuyen" required>
+                                    <option value="L02">L02 · Ép định hình</option>
+                                    <option value="L01">L01 · Lắp ráp</option>
+                                    <option value="L03">L03 · Đóng gói</option>
+                                </select>
+                            </div>
+
+                            <div class="truong">
+                                <label for="may">Máy</label>
+                                <select id="may" required>
+                                    <option value="M-202">M-202 · Máy ép số 1</option>
+                                    <option value="M-203">M-203 · Máy ép số 2</option>
+                                    <option value="M-301">M-301 · Máy đóng gói</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="truong">
+                            <label for="thoi-diem">Thời điểm</label>
+                            <input type="datetime-local" id="thoi-diem" required>
+                        </div>
+
+                        <div class="truong">
+                            <label for="mo-ta">Mô tả hiện tượng</label>
+                            <textarea id="mo-ta" rows="4"
+                                placeholder="Mô tả hiện tượng đang xảy ra..."
+                                required></textarea>
+                        </div>
+
+                        <div class="truong">
+                            <label>Mức ảnh hưởng ban đầu</label>
+                            <div class="cac-muc">
+                                <button type="button" class="muc anh-huong"
+                                    data-muc="Dừng một phần">Dừng một phần</button>
+                                <button type="button" class="muc"
+                                    data-muc="Chưa rõ">Chưa rõ</button>
+                            </div>
+                            <input type="hidden" id="muc-anh-huong"
+                                value="Dừng một phần">
+                        </div>
+
+                        <div class="truong">
+                            <label for="tep-anh">Ảnh / ghi chú kèm theo</label>
+                            <label class="khu-vuc-tep" for="tep-anh">
+                                <span id="ten-tep">Kéo tệp vào đây hoặc chọn ảnh</span>
+                                <small>Tối đa 3 ảnh · PNG/JPG</small>
+                            </label>
+                            <input type="file" id="tep-anh" accept="image/png,image/jpeg"
+                                multiple hidden>
+                        </div>
+
+                        <p id="thong-bao-form" class="thong-bao-form"
+                            aria-live="polite"></p>
+
+                        <div class="nut-cuoi">
+                            <button type="button" id="nut-luu" class="nut nut-phu">
+                                Lưu nháp
+                            </button>
+                            <button type="submit" class="nut nut-chinh">
+                                Gửi sự cố
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Bảng AI phân loại sự cố -->
+                    <section class="the-ai">
+                        <h3>AI-1 · Phân loại sự cố</h3>
+                        <p class="ai-mo-ta">Đang có dữ liệu để phân tích</p>
+
+                        <div class="duong-ke"></div>
+
+                        <div class="ket-qua-ai">
+                            <div>
+                                <span>Gợi ý loại lỗi</span>
+                                <h2 id="loai-loi">Lỗi cơ khí</h2>
+                            </div>
+                            <div>
+                                <span>Mức ưu tiên</span>
+                                <strong id="muc-uu-tien" class="nhan-cao">Cao</strong>
+                            </div>
+                        </div>
+
+                        <div class="ly-do">
+                            <span>Lý do</span>
+                            <p id="ly-do-ai">
+                                Rung mạnh và nhiệt tăng nhanh có thể liên quan đến
+                                cụm truyền động hoặc ổ trục.
+                            </p>
+                        </div>
+
+                        <div class="do-tin-cay">
+                            <span>Độ tin cậy</span>
+                            <div class="thanh-tin-cay">
+                                <div id="thanh-ai"></div>
+                            </div>
+                            <strong id="phan-tram-ai">78%</strong>
+                        </div>
+
+                        <div class="nut-ai">
+                            <button type="button" id="chap-nhan" class="nut nut-chinh">
+                                Chấp nhận
+                            </button>
+                            <button type="button" id="sua-ai" class="nut nut-phu">
+                                Sửa
+                            </button>
+                            <button type="button" id="tu-choi" class="nut nut-phu">
+                                Từ chối
+                            </button>
+                            <button type="button" id="tao-lai" class="nut nut-phu">
+                                Tạo lại
+                            </button>
+                        </div>
+
+                        <p id="thong-bao-ai" class="thong-bao-ai" aria-live="polite">
+                            Nếu AI không chắc chắn, bạn vẫn có thể nhập thủ công.
+                        </p>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
